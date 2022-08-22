@@ -2,7 +2,7 @@
 
 namespace App\Patterns\Creational\AbstractFactory;
 
-class Logger
+interface Logger
 {
-
+    public function log(string $message);
 }
