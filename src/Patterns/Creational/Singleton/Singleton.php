@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Patterns\Creational\Singleton;
+namespace App\Patterns\Creational\Singleton;
 
 use Exception;
 
