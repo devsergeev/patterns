@@ -13,6 +13,7 @@ class Application
     {
         $this->config = $config;
         $this->logger = $this->createLogger();
+        $this->log('Приложение инициализированно.');
     }
 
     public function run()
@@ -47,8 +48,10 @@ class Application
                     throw new Exception('Не указан файл лога');
                 }
                 return new FileLogger($loggerConfig['filePath']);
+
             case 'stdout':
                 return new StdoutLogger();
+
             default:
                 throw new Exception('Неизвестный тип логгера');
         }
