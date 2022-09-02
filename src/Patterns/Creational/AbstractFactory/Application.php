@@ -2,9 +2,8 @@
 
 namespace App\Patterns\Creational\AbstractFactory;
 
-use App\Patterns\Creational\AbstractFactory\Logger\FileLogger;
+use App\Patterns\Creational\AbstractFactory\Logger\LoggerFactory;
 use App\Patterns\Creational\AbstractFactory\Logger\LoggerInterface;
-use App\Patterns\Creational\AbstractFactory\Logger\StdoutLogger;
 use Exception;
 
 class Application
@@ -38,7 +37,8 @@ class Application
     private function createLogger(): LoggerInterface
     {
         $loggerConfig = $this->getLoggerCongig();
-        return $this->createLoggerByConfig($loggerConfig);
+        [$className, $constructorParams] = $loggerConfig;
+        return LoggerFactory::createLogger($className, $constructorParams);
     }
 
     /**
@@ -50,32 +50,13 @@ class Application
             throw new Exception('Не настроен логгер');
         }
 
-        $loggerConfig = $this->config['logger'];
-
-        if (empty($loggerConfig['type'])) {
+        if (empty($this->config['logger'][0])) {
             throw new Exception('Не настроен тип логгера');
         }
-
-        return $loggerConfig;
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function createLoggerByConfig(array $loggerConfig): LoggerInterface
-    {
-        switch ($loggerConfig['type']) {
-            case FileLogger::class:
-                if (empty($loggerConfig['filePath'])) {
-                    throw new Exception('Не указан файл лога');
-                }
-                return new FileLogger($loggerConfig['filePath']);
-
-            case StdoutLogger::class:
-                return new StdoutLogger();
-
-            default:
-                throw new Exception('Неизвестный тип логгера');
+        if (empty($this->config['logger'][1])) {
+            $this->config['logger'][1] = [];
         }
+
+        return $this->config['logger'];
     }
 }
