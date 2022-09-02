@@ -65,13 +65,13 @@ class Application
     private function createLoggerByConfig(array $loggerConfig): LoggerInterface
     {
         switch ($loggerConfig['type']) {
-            case 'file':
+            case FileLogger::class:
                 if (empty($loggerConfig['filePath'])) {
                     throw new Exception('Не указан файл лога');
                 }
                 return new FileLogger($loggerConfig['filePath']);
 
-            case 'stdout':
+            case StdoutLogger::class:
                 return new StdoutLogger();
 
             default:
