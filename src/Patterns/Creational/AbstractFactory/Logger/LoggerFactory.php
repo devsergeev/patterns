@@ -6,9 +6,18 @@ use Exception;
 
 class LoggerFactory
 {
-    public static function createLogger(string $class, array $params): LoggerInterface
+    /**
+     * @throws Exception
+     */
+    public static function createLogger(array $config): LoggerInterface
     {
+        $loggerConfig = new LoggerConfig($config);
+
+        $class = $loggerConfig->getClass();
+        $params = $loggerConfig->getParams();
+
         switch ($class) {
+
             case FileLogger::class:
                 if (empty($params['filePath'])) {
                     throw new Exception('Не указан файл лога');
@@ -20,6 +29,7 @@ class LoggerFactory
 
             default:
                 throw new Exception('Неизвестный тип логгера');
+
         }
     }
 }

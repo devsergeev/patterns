@@ -8,55 +8,27 @@ use Exception;
 
 class Application
 {
-    private array $config;
     private LoggerInterface $logger;
 
     public function __construct(array $config)
     {
-        $this->config = $config;
-        $this->logger = $this->createLogger();
-        $this->log('Приложение инициализированно.');
+        try {
+            $this->logger = LoggerFactory::createLogger($config);
+            $this->log('Приложение инициализированно.');
+        } catch (Exception $exception) {
+            echo $exception->getMessage();
+            echo PHP_EOL;
+            die;
+        }
     }
 
-    public function run()
+    public function run(): void
     {
         $this->log('Приложение запущено.');
     }
 
-    /**
-     * @throws Exception
-     */
     private function log(string $message): void
     {
         $this->logger->log($message);
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function createLogger(): LoggerInterface
-    {
-        $loggerConfig = $this->getLoggerCongig();
-        [$className, $constructorParams] = $loggerConfig;
-        return LoggerFactory::createLogger($className, $constructorParams);
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function getLoggerCongig(): array
-    {
-        if (empty($this->config['logger'])) {
-            throw new Exception('Не настроен логгер');
-        }
-
-        if (empty($this->config['logger'][0])) {
-            throw new Exception('Не настроен тип логгера');
-        }
-        if (empty($this->config['logger'][1])) {
-            $this->config['logger'][1] = [];
-        }
-
-        return $this->config['logger'];
     }
 }
