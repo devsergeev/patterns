@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory;
+namespace App\Patterns\Creational\AbstractFactory\Logger;
 
-class StdoutLogger implements Logger
+class StdoutLogger implements LoggerInterface
 {
     public function log(string $message)
     {

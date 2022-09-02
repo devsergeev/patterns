@@ -2,12 +2,15 @@
 
 namespace App\Patterns\Creational\AbstractFactory;
 
+use App\Patterns\Creational\AbstractFactory\Logger\FileLogger;
+use App\Patterns\Creational\AbstractFactory\Logger\LoggerInterface;
+use App\Patterns\Creational\AbstractFactory\Logger\StdoutLogger;
 use Exception;
 
 class Application
 {
     private array $config;
-    private Logger $logger;
+    private LoggerInterface $logger;
 
     public function __construct(array $config)
     {
@@ -32,16 +35,35 @@ class Application
     /**
      * @throws Exception
      */
-    private function createLogger(): Logger
+    private function createLogger(): LoggerInterface
+    {
+        $loggerConfig = $this->getLoggerCongig();
+        return $this->createLoggerByConfig($loggerConfig);
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function getLoggerCongig(): array
     {
         if (empty($this->config['logger'])) {
             throw new Exception('Не настроен логгер');
         }
+
         $loggerConfig = $this->config['logger'];
+
         if (empty($loggerConfig['type'])) {
             throw new Exception('Не настроен тип логгера');
         }
 
+        return $loggerConfig;
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function createLoggerByConfig(array $loggerConfig): LoggerInterface
+    {
         switch ($loggerConfig['type']) {
             case 'file':
                 if (empty($loggerConfig['filePath'])) {

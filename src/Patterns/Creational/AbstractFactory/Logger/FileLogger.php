@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory;
+namespace App\Patterns\Creational\AbstractFactory\Logger;
 
-class FileLogger implements Logger
+class FileLogger implements LoggerInterface
 {
     private string $filePath;
 
