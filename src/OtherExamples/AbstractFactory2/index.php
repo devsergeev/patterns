@@ -6,7 +6,7 @@ use App\OtherExamples\AbstractFactory2\Client\FileLoggerFactory;
 use App\OtherExamples\AbstractFactory2\Client\LoggerType;
 use App\OtherExamples\AbstractFactory2\Client\StdoutLoggerFactory;
 
-require __DIR__ . '/../../../../vendor/autoload.php';
+require __DIR__ . '/../../../vendor/autoload.php';
 
 $loggerType = LoggerType::from('stdout');
 

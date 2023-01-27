@@ -1,2 +1,2 @@
 `make bash`  
-`php src/Patterns/Creational/AbstractFactory/index.php `  
+`php src/OtherExamples/AbstractFactory/index.php `  
