@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory2\Client;
+namespace App\OtherExamples\AbstractFactory2\Client;
 
 enum LoggerType: string
 {

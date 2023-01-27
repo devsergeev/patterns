@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory2\Client;
+namespace App\OtherExamples\AbstractFactory2\Client;
 
-use App\Patterns\Creational\AbstractFactory2\Logger\LoggerFactoryInterface;
-use App\Patterns\Creational\AbstractFactory2\Logger\LoggerInterface;
+use App\OtherExamples\AbstractFactory2\Logger\LoggerFactoryInterface;
+use App\OtherExamples\AbstractFactory2\Logger\LoggerInterface;
 
 class FileLoggerFactory implements LoggerFactoryInterface
 {

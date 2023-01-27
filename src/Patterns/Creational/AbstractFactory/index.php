@@ -4,6 +4,10 @@ namespace App\Patterns\Creational\AbstractFactory;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
 
-$config = require_once __DIR__ . '/config.php';
-$app = new Application($config);
-$app->run();
+$logistics = new SeaLogistics();
+echo $logistics->planDelevery();
+echo PHP_EOL;
+
+$logistics = new RoadLogistics();
+echo $logistics->planDelevery();
+echo PHP_EOL;

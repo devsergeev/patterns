@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory;
+namespace App\OtherExamples\AbstractFactory;
 
-use App\Patterns\Creational\AbstractFactory\Logger\LoggerFactory;
-use App\Patterns\Creational\AbstractFactory\Logger\LoggerInterface;
+use App\OtherExamples\AbstractFactory\Logger\LoggerFactory;
+use App\OtherExamples\AbstractFactory\Logger\LoggerInterface;
 use Exception;
 
 class Application

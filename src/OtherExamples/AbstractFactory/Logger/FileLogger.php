@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory\Logger;
+namespace App\OtherExamples\AbstractFactory\Logger;
 
 class FileLogger implements LoggerInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory3;
+namespace App\Patterns\Creational\AbstractFactory;
 
 class Truck implements Transport
 {

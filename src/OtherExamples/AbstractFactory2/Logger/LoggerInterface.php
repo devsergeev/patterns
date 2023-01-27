@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory\Logger;
+namespace App\OtherExamples\AbstractFactory2\Logger;
 
 interface LoggerInterface
 {
