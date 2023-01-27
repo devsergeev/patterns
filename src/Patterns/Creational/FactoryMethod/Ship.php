@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Patterns\Creational\AbstractFactory;
+namespace App\Patterns\Creational\FactoryMethod;
 
 class Ship implements Transport
 {
