@@ -1,10 +1,6 @@
 <?php
 
-use App\Patterns\Behavioral\Strategy\DBRepository;
-use App\Patterns\Behavioral\Strategy\FileRepository;
-use App\Patterns\Behavioral\Strategy\MemoryRepository;
-use App\Patterns\Behavioral\Strategy\Product;
-use App\Patterns\Behavioral\Strategy\Service;
+namespace App\Patterns\Behavioral\Strategy;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
 

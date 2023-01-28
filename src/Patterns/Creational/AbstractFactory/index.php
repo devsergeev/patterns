@@ -1,10 +1,6 @@
 <?php
 
-namespace App\Patterns\Creational\FactoryMethod;
-
-use App\Patterns\Creational\AbstractFactory\CsvFileFormatFactory;
-use App\Patterns\Creational\AbstractFactory\FileFormatFactory;
-use App\Patterns\Creational\AbstractFactory\JsonFileFormatFactory;
+namespace App\Patterns\Creational\AbstractFactory;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
 

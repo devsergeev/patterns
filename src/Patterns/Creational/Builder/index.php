@@ -1,10 +1,6 @@
 <?php
 
-namespace App\Patterns\Creational\FactoryMethod;
-
-use App\Patterns\Creational\Builder\AbstractDocumentBuilder;
-use App\Patterns\Creational\Builder\HtmlBuilder;
-use App\Patterns\Creational\Builder\MarkdownBuilder;
+namespace App\Patterns\Creational\Builder;
 
 require __DIR__ . '/../../../../vendor/autoload.php';
 
