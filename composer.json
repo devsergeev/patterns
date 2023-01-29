@@ -11,5 +11,7 @@
             "email": "sergeev.vasily.v@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpoffice/phpword": "dev-master"
+    }
 }
