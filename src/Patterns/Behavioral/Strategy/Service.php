@@ -6,7 +6,7 @@ class Service
 {
     private Repository $repository;
 
-    public function __construct(Repository $repository)
+    public function setStrategy(Repository $repository)
     {
         $this->repository = $repository;
     }
