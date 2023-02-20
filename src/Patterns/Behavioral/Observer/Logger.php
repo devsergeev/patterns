@@ -2,11 +2,13 @@
 
 namespace App\Patterns\Behavioral\Observer;
 
+use SplSubject;
+
 class Logger implements \SplObserver
 {
-    private $filename;
+    private string $filename;
 
-    public function __construct($filename)
+    public function __construct(string $filename)
     {
         $this->filename = $filename;
         if (file_exists($this->filename)) {
@@ -14,7 +16,7 @@ class Logger implements \SplObserver
         }
     }
 
-    public function update(\SplSubject $repository, string $event = null, $data = null): void
+    public function update(SplSubject $subject, string $event = null, ?array $data = null): void
     {
         $entry = date("Y-m-d H:i:s") . ": '$event' with data '" . json_encode($data) . "'\n";
         file_put_contents($this->filename, $entry, FILE_APPEND);

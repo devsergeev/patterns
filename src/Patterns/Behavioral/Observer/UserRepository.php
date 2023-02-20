@@ -3,24 +3,25 @@
 namespace App\Patterns\Behavioral\Observer;
 
 use SplObserver;
+use SplSubject;
 
-class UserRepository implements \SplSubject
+class UserRepository implements SplSubject
 {
-    private $users = [];
-    private $observers = [];
+    private array $users = [];
+    private array $observers = [];
 
     public function __construct()
     {
         $this->observers["*"] = [];
     }
 
-    public function attach(\SplObserver $observer, string $event = "*"): void
+    public function attach(SplObserver $observer, string $event = "*"): void
     {
         $this->initEventGroup($event);
         $this->observers[$event][] = $observer;
     }
 
-    public function detach(\SplObserver $observer, string $event = "*"): void
+    public function detach(SplObserver $observer, string $event = "*"): void
     {
         foreach ($this->getEventObservers($event) as $key => $s) {
             if ($s === $observer) {
@@ -29,6 +30,13 @@ class UserRepository implements \SplSubject
         }
     }
 
+    /**
+     * Notify an observer
+     * @link https://php.net/manual/en/splsubject.notify.php
+     * @param string $event
+     * @param null $data
+     * @return void
+     */
     public function notify(string $event = "*", $data = null): void
     {
         echo "UserRepository: Broadcasting the '$event' event.\n";
@@ -55,7 +63,7 @@ class UserRepository implements \SplSubject
 
     // Двлее методы относящиеся к бизнесс-логике
 
-    public function initialize($filename): void
+    public function initialize(string $filename): void
     {
         echo "UserRepository: Loading user records from a file.\n";
         // ...
@@ -69,7 +77,7 @@ class UserRepository implements \SplSubject
         $user = new User();
         $user->update($data);
 
-        $id = bin2hex(openssl_random_pseudo_bytes(16));
+        $id = uniqid();
         $user->update(["id" => $id]);
         $this->users[$id] = $user;
 

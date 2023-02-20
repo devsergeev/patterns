@@ -4,9 +4,9 @@ namespace App\Patterns\Behavioral\Observer;
 
 class User
 {
-    public $attributes = [];
+    public array $attributes = [];
 
-    public function update($data): void
+    public function update(array $data): void
     {
         $this->attributes = array_merge($this->attributes, $data);
     }

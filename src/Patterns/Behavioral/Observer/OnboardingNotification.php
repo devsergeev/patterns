@@ -2,21 +2,23 @@
 
 namespace App\Patterns\Behavioral\Observer;
 
+use SplSubject;
+
 class OnboardingNotification implements \SplObserver
 {
-    private $adminEmail;
+    private string $adminEmail;
 
-    public function __construct($adminEmail)
+    public function __construct(string $adminEmail)
     {
         $this->adminEmail = $adminEmail;
     }
 
-    public function update(\SplSubject $repository, string $event = null, $data = null): void
+    public function update(SplSubject $subject, string $event = null, ?array $data = null): void
     {
         // mail($this->adminEmail,
-        //     "Onboarding required",
-        //     "We have a new user. Here's his info: " .json_encode($data));
+        //     "Требуется регистрация",
+        //     "У нас новый пользователь. Вот его информация: " .json_encode($data));
 
-        echo "OnboardingNotification: The notification has been emailed!\n";
+        echo "OnboardingNotification: уведомление отправлено по электронной почте $this->adminEmail!\n";
     }
 }
