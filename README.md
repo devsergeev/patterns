@@ -13,4 +13,4 @@
 - стратегия (strategy)
 - посредник (mediator)
 - итератор (iterator)
-- наблюдатель (Observer)
+- наблюдатель (observer)
